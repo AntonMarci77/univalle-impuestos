@@ -518,7 +518,7 @@ function vJournal() {
   const rows = S.entries.map((e, i) => jRow(e, i)).join("");
   return `
   <div class="row spread">
-    <div><h1>${tr("Libro diario", "Journal")}</h1><p class="lead">${tr("Una línea por débito y crédito. Para un asiento compuesto (por ejemplo, compra con IVA) use varias líneas con el mismo documento. Fecha DD/MM/AAAA, valores en pesos sin decimales.", "One line per debit and credit. For a compound entry (e.g. a purchase with VAT) use several lines with the same document. Date DD/MM/YYYY, amounts in pesos without decimals.")}</p></div>
+    <div><h1>${tr("Libro diario", "Journal")}</h1><p class="lead">${tr("Una línea por débito y crédito. Para un asiento compuesto (por ejemplo, compra con IVA) use varias líneas con el mismo documento. Fecha DD/MM/AAAA, valores en pesos sin decimales. Tab o Enter en la columna Crédito pasa a la línea siguiente y, al final, agrega una nueva.", "One line per debit and credit. For a compound entry (e.g. a purchase with VAT) use several lines with the same document. Date DD/MM/YYYY, amounts in pesos without decimals. Tab or Enter in the Credit column moves to the next line and adds a new one at the end.")}</p></div>
   </div>
   ${sampleBanner()}
   <div class="panel">
@@ -579,9 +579,16 @@ function bindJournal() {
   });
   body.addEventListener("focusout", ev => { const inp = ev.target; if (inp.dataset.f === "amount") { const v = parseNum(inp.value); inp.value = v ? fmt(v, false) : ""; } });
   body.addEventListener("keydown", ev => {
-    if (ev.key !== "Enter") return;
-    const inp = ev.target; const f = inp.dataset.f; if (!f) return; ev.preventDefault();
+    const inp = ev.target; const f = inp.dataset && inp.dataset.f; if (!f) return;
     const tr_ = inp.closest("tr"); const idx = cols.indexOf(f);
+    // Tab in the credit column jumps to the next line, adding a new one at the end
+    if (ev.key === "Tab" && !ev.shiftKey && !ev.altKey && !ev.ctrlKey && !ev.metaKey && f === "cr") {
+      ev.preventDefault();
+      let nx = tr_.nextElementSibling; if (!nx) { addLine(); nx = body.lastElementChild; }
+      nx.querySelector('[data-f="date"]').focus(); return;
+    }
+    if (ev.key !== "Enter") return;
+    ev.preventDefault();
     if (idx < cols.length - 1) { tr_.querySelector(`[data-f="${cols[idx + 1]}"]`).focus(); return; }
     let next = tr_.nextElementSibling; if (!next) { addLine(); next = body.lastElementChild; }
     next.querySelector('[data-f="date"]').focus();
