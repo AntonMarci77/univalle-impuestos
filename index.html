@@ -1,24 +1,24 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Del asiento a la renta · Univalle 2026 (pregrado)</title>
-<meta name="description" content="Teaching app by Anton Marci for Universidad del Valle (Contaduría Pública, undergraduate): bookkeeping with the PUC, financial statements, Colombian income tax, and the same company taxed in nine countries. / Aplicación docente: contabilidad con el PUC, estados financieros, impuesto de renta en Colombia y la misma sociedad en nueve países.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2312285A'/%3E%3Cpath d='M6 22h9l11-12' stroke='%23E2B13C' stroke-width='3' fill='none'/%3E%3C/svg%3E">
+<title>Del asiento a la renta · Univalle 2026</title>
+<meta name="description" content="Aplicación docente de Anton Marci para la Universidad del Valle: contabilidad con el PUC, estados financieros e impuesto de renta en Colombia, con Eslovaquia como comparación. / Teaching app: accounting, financial statements and income tax in Colombia, with Slovakia as comparison.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230F3B4A'/%3E%3Cpath d='M6 22h9l11-12' stroke='%23E9B44C' stroke-width='3' fill='none'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: ledger workbook - sticky header with tabs, one working panel per tab, paper-like tables with mono figures */
 :root {
-  --bg: #F4F6FA;
+  --bg: #F3F6F5;
   --paper: #FFFFFF;
-  --ink: #18223A;
-  --muted: #5A6578;
-  --line: #D5DDEA;
-  --tint: #EAF0FA;
-  --petrol: #12285A;
-  --teal: #2A5BB0;
-  --gold: #A87A12;
-  --gold-soft: #F7EDCF;
+  --ink: #1B2A33;
+  --muted: #5B6B72;
+  --line: #D6E0E0;
+  --tint: #E7F0F0;
+  --petrol: #0F3B4A;
+  --teal: #0F6E7A;
+  --gold: #C98A1B;
+  --gold-soft: #F6E7C8;
   --ok: #1E7F4F;
   --ok-soft: #DDF1E6;
   --bad: #B5462F;
@@ -30,12 +30,12 @@
   --r: 10px;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #0D1424; --paper: #151F35; --ink: #E4E9F3; --muted: #9DA9BF; --line: #283654; --tint: #1A2742;
-  --petrol: #0B1838; --teal: #86AAF0; --gold: #E7B84E; --gold-soft: #3A2F17; --ok: #5CC28C; --ok-soft: #173326;
+  --bg: #0E1A1F; --paper: #15252C; --ink: #E3ECEC; --muted: #9BB0B5; --line: #2A3F47; --tint: #1B3039;
+  --petrol: #0B2A35; --teal: #4FB3BF; --gold: #E9B44C; --gold-soft: #3A2F17; --ok: #5CC28C; --ok-soft: #173326;
   --bad: #E98B74; --bad-soft: #3A1F19; --head-fg: #FFFFFF; color-scheme: dark; } }
 :root[data-theme="dark"] {
-  --bg: #0D1424; --paper: #151F35; --ink: #E4E9F3; --muted: #9DA9BF; --line: #283654; --tint: #1A2742;
-  --petrol: #0B1838; --teal: #86AAF0; --gold: #E7B84E; --gold-soft: #3A2F17; --ok: #5CC28C; --ok-soft: #173326;
+  --bg: #0E1A1F; --paper: #15252C; --ink: #E3ECEC; --muted: #9BB0B5; --line: #2A3F47; --tint: #1B3039;
+  --petrol: #0B2A35; --teal: #4FB3BF; --gold: #E9B44C; --gold-soft: #3A2F17; --ok: #5CC28C; --ok-soft: #173326;
   --bad: #E98B74; --bad-soft: #3A1F19; --head-fg: #FFFFFF; color-scheme: dark; }
 
 * { box-sizing: border-box; }
@@ -206,20 +206,6 @@ footer.foot { max-width: 1280px; margin: 0 auto; padding-left: max(16px, env(saf
 .review > div { border-top: 1px solid var(--line); padding-top: 8px; }
 a.btn { text-decoration: none; color: inherit; display: inline-block; }
 @media (max-width: 860px) { .lect { grid-template-columns: minmax(0, 1fr); } }
-
-table.cn { min-width: 900px; }
-table.cn th, table.cn td { padding: 7px 8px; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
-table.cn th.num, table.cn td.num { text-align: right; }
-table.cn td.how { font-size: .84rem; color: var(--muted); max-width: 380px; }
-table.cn tr.co td { background: var(--gold-soft); }
-.bar { height: 12px; background: var(--tint); border-radius: 6px; overflow: hidden; margin-top: 4px; }
-.bar span { display: block; height: 100%; background: var(--teal); border-radius: 6px; }
-tr.co .bar span { background: var(--gold); }
-.chk { display: inline-flex; gap: 6px; align-items: center; font-size: .88rem; border: 1px solid var(--line); border-radius: 8px; padding: 4px 10px; background: var(--paper); }
-.task { display: grid; gap: 10px; }
-.task ol { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
-.pq input { flex: 1; min-width: 0; }
-.top { border-bottom: 3px solid var(--gold); }
 </style>
 
 <header class="top">
@@ -351,30 +337,27 @@ const SAMPLE = [
 /* ---------------- i18n ---------------- */
 const T = {
  es: {
-  tagline: "Universidad del Valle · Colombia, Europa Central y el Báltico",
-  tabs: { home: "Inicio", journal: "Libro diario", t: "Cuentas T", fs: "Estados financieros", tax: "Del resultado al impuesto", countries: "Nueve países", practice: "Práctica", puc: "Plan de cuentas", learn: "Aprender", quiz: "Autoevaluación" },
-  foot: "Material docente de Anton Marci (Universidad de Economía y Negocios de Bratislava) para el Programa Académico de Contaduría Pública de la Universidad del Valle, 11 de noviembre de 2026. Uso educativo; no es asesoría tributaria. Los datos se guardan solo en este navegador.",
+  tagline: "Universidad del Valle · Colombia y Eslovaquia",
+  tabs: { home: "Inicio", journal: "Libro diario", t: "Cuentas T", fs: "Estados financieros", tax: "Del resultado al impuesto", puc: "Plan de cuentas", learn: "Aprender", quiz: "Autoevaluación" },
+  foot: "Material docente de Anton Marci (Universidad de Economía y Negocios de Bratislava) para las conferencias en la Universidad del Valle, Cali, noviembre de 2026. Uso educativo; no es asesoría tributaria. Los datos se guardan solo en este navegador.",
  },
  en: {
-  tagline: "Universidad del Valle · Colombia, Central Europe and the Baltics",
-  tabs: { home: "Home", journal: "Journal", t: "T-accounts", fs: "Financial statements", tax: "From profit to tax", countries: "Nine countries", practice: "Practice", puc: "Chart of accounts", learn: "Learn", quiz: "Self-test" },
-  foot: "Teaching material by Anton Marci (Bratislava University of Economics and Business) for the Public Accounting programme at Universidad del Valle, 11 November 2026. Educational use only; not tax advice. Data are stored only in this browser.",
+  tagline: "Universidad del Valle · Colombia and Slovakia",
+  tabs: { home: "Home", journal: "Journal", t: "T-accounts", fs: "Financial statements", tax: "From profit to tax", puc: "Chart of accounts", learn: "Learn", quiz: "Self-test" },
+  foot: "Teaching material by Anton Marci (Bratislava University of Economics and Business) for the lectures at Universidad del Valle, Cali, November 2026. Educational use only; not tax advice. Data are stored only in this browser.",
  },
 };
-const TAB_ORDER = ["home","journal","t","fs","tax","countries","practice","puc","learn","quiz"];
+const TAB_ORDER = ["home","journal","t","fs","tax","puc","learn","quiz"];
 
 /* ---------------- state ---------------- */
 const store = {
-  get(k, d) { try { const v = localStorage.getItem("uvp." + k); return v ? JSON.parse(v) : d; } catch { return d; } },
-  set(k, v) { try { localStorage.setItem("uvp." + k, JSON.stringify(v)); } catch {} },
+  get(k, d) { try { const v = localStorage.getItem("uvi." + k); return v ? JSON.parse(v) : d; } catch { return d; } },
+  set(k, v) { try { localStorage.setItem("uvi." + k, JSON.stringify(v)); } catch {} },
 };
 let uid = 0; const nid = () => "r" + (++uid) + Math.random().toString(36).slice(2, 6);
 function sampleEntries() { return SAMPLE.map(r => ({ id: nid(), date: r[0], doc: r[1], desc: r[2], amount: +r[3], dr: r[4], cr: r[5] })); }
-const CN_PRESETS_DEFAULT = { rev: 800000, pbt: 60000, nb: 5000, div: 30000 };
 const S = {
   lang: store.get("lang", "es"),
-  cn: Object.assign({ huInfo: false, ltSmall: true, ltFirst: false, atAG: false }, CN_PRESETS_DEFAULT, store.get("cn", {})),
-  pr: store.get("pr", {}),
   tab: TAB_ORDER.includes(location.hash.slice(1)) ? location.hash.slice(1) : store.get("tab", "home"),
   entries: store.get("entries", null) || sampleEntries(),
   isSample: store.get("isSample", true),
@@ -396,7 +379,7 @@ function fmt(n, cur = true) {
 }
 function fmtEUR(n) {
   const neg = n < 0; const a = Math.round(Math.abs(n));
-  return (neg ? "-" : "") + String(a).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00A0") + "\u00A0EUR";
+  return (neg ? "-" : "") + String(a).replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " EUR";
 }
 function parseNum(s) {
   if (typeof s === "number") return s;
@@ -492,12 +475,10 @@ function renderChrome() {
 }
 function render() {
   renderChrome();
-  const v = { home: vHome, journal: vJournal, t: vT, fs: vFS, tax: vTax, countries: vCountries, practice: vPractice, puc: vPUC, learn: vLearn, quiz: vQuiz }[S.tab] || vHome;
+  const v = { home: vHome, journal: vJournal, t: vT, fs: vFS, tax: vTax, puc: vPUC, learn: vLearn, quiz: vQuiz }[S.tab] || vHome;
   app.innerHTML = `<section class="view" id="view-${S.tab}">${v()}</section>`;
   if (S.tab === "journal") bindJournal();
   if (S.tab === "tax") bindTax();
-  if (S.tab === "countries") bindCountries();
-  if (S.tab === "practice") bindPractice();
 }
 function sampleBanner() {
   return S.isSample ? `<p class="pill info" style="justify-self:start">${tr("Ejemplo cargado: Comercializadora Andina S.A.S., año gravable 2026", "Example loaded: Comercializadora Andina S.A.S., tax year 2026")}</p>` : "";
@@ -511,14 +492,12 @@ function vHome() {
     ["t", "2", tr("Cuentas T", "T-accounts"), tr("Vea débitos y créditos de cada cuenta.", "See debits and credits of each account.")],
     ["fs", "3", tr("Estados financieros", "Financial statements"), tr("Situación financiera y resultados, en vivo.", "Balance sheet and income statement, live.")],
     ["tax", "4", tr("Impuesto de renta", "Income tax"), tr("Conciliación, 35 % y TTD; comparación con Eslovaquia.", "Reconciliation, 35 % and TTD; Slovak comparison.")],
-    ["countries", "5", tr("Nueve países", "Nine countries"), tr("La misma sociedad en Europa Central, el Báltico y Colombia.", "The same company in Central Europe, the Baltics and Colombia.")],
-    ["practice", "6", tr("Práctica", "Practice"), tr("Tres tareas con verificación de respuestas.", "Three tasks with answer checks.")],
   ];
   return `
   <div class="hero">
-    <p class="eyebrow">${tr("Universidad del Valle · Contaduría Pública · 11 de noviembre de 2026", "Universidad del Valle · Public Accounting · 11 November 2026")}</p>
+    <p class="eyebrow">${tr("Universidad del Valle · Contaduría Pública · Cali, noviembre de 2026", "Universidad del Valle · Public Accounting · Cali, November 2026")}</p>
     <h1>${tr("Del registro contable al impuesto de renta", "From the accounting record to income tax")}</h1>
-    <p class="lead">${tr("Registre un año de una sociedad comercial colombiana con el Plan Único de Cuentas, vea los estados financieros y calcule el impuesto de renta. Después, compare la misma sociedad en nueve países de Europa Central, el Báltico y Colombia. Anton Marci, Universidad de Economía y Negocios de Bratislava.", "Record one year of a Colombian trading company with the Plan Único de Cuentas, see the financial statements and compute the income tax. Then compare the same company in nine countries of Central Europe, the Baltics and Colombia. Anton Marci, Bratislava University of Economics and Business.")}</p>
+    <p class="lead">${tr("Registre un año de una sociedad comercial colombiana con el Plan Único de Cuentas, vea los estados financieros y calcule el impuesto de renta. Al final, la misma utilidad pasa por el impuesto eslovaco, como comparación. Anton Marci, Universidad de Economía y Negocios de Bratislava.", "Record one year of a Colombian trading company with the Plan Único de Cuentas, see the financial statements and compute the income tax. At the end, the same profit goes through the Slovak tax, as a comparison. Anton Marci, Bratislava University of Economics and Business.")}</p>
     ${SLIDO_URL ? `<div class="row"><a class="btn primary" href="${SLIDO_URL}" target="_blank" rel="noopener">${tr("Participar en Slido", "Join on Slido")}</a></div>` : ""}
     <div class="flow">${steps.map(s => `<button data-go="${s[0]}"><b>${s[1]}</b><span>${s[2]}</span><small>${s[3]}</small></button>`).join("")}</div>
   </div>
@@ -529,9 +508,9 @@ function vHome() {
   </div>
   ${sampleBanner()}
   <div class="tgrid">
-    <button class="tcard" data-go="learn"><b>${tr("Aprender", "Learn")}</b><small>${tr("Reglas de Colombia y de los nueve países, con fuentes y glosario.", "Rules for Colombia and the nine countries, with sources and a glossary.")}</small></button>
+    <button class="tcard" data-go="learn"><b>${tr("Aprender", "Learn")}</b><small>${tr("Las reglas de Colombia con sus fuentes y glosario.", "Colombian rules with sources and a glossary.")}</small></button>
     <button class="tcard" data-go="quiz"><b>${tr("Autoevaluación", "Self-test")}</b><small>${tr("Preguntas por tema con explicación, en español e inglés.", "Questions by topic with explanations, in Spanish and English.")}</small><span class="meta">${BANK.length} ${tr("preguntas", "questions")}</span></button>
-    <a class="tcard" href="/pregrado/clase-univalle-pregrado.pdf" download style="text-decoration:none"><b>${tr("Diapositivas (PDF)", "Slides (PDF)")}</b><small>${tr("Clase del 11 de noviembre de 2026, diapositivas en español.", "Lecture of 11 November 2026, slides in Spanish.")}</small></a>
+    <a class="tcard" href="clase-univalle-posgrados.pdf" download style="text-decoration:none"><b>${tr("Diapositivas (PDF)", "Slides (PDF)")}</b><small>${tr("Conferencia de posgrado del 9 de noviembre, en español e inglés.", "Postgraduate lecture of 9 November, in Spanish and English.")}</small></a>
   </div>`;
 }
 
@@ -867,178 +846,6 @@ function vQuiz() {
   <div class="row spread"><button class="btn" id="q-peek">${st.peek ? tr("Ocultar traducción", "Hide translation") : tr("Ver en inglés", "View in Spanish")}</button><span class="row"><button class="btn" id="q-exit">${tr("Salir", "Exit")}</button>${st.answered !== null ? `<button class="btn primary" id="q-next">${st.i + 1 < N ? tr("Siguiente", "Next") : tr("Ver resultado", "See result")}</button>` : ""}</span></div></div>`;
 }
 
-/* ---------------- nine-country engine (corporate level, simplified teaching version, rules 2026) ---------------- */
-const CN_PRESETS = {
-  A: { rev: 800000, pbt: 60000, nb: 5000, div: 30000 },
-  B: { rev: 800000, pbt: -10000, nb: 5000, div: 0 },
-  C: { rev: 80000, pbt: 5000, nb: 0, div: 0 },
-};
-function cnPct(r) { return (r * 100).toFixed(r * 100 % 1 ? 1 : 0).replace(".", S.lang === "es" ? "," : ".") + " %"; }
-function taxCountries(c) {
-  const R = Math.max(c.rev, 0), B = c.pbt + c.nb, Bp = Math.max(B, 0), out = [];
-  const E = fmtEUR, add = (id, es, en, design, tax, hes, hen, loss) => out.push({ id, name: { es, en }, design, tax, how: { es: hes, en: hen }, loss });
-  // Slovakia
-  { const r = skRate(R), m = skMin(R), x = Bp * r, pay = Math.max(x, m);
-    add("SK", "Eslovaquia", "Slovakia", 1, pay,
-      `${cnPct(r)} × ${E(Bp)} = ${E(x)}; mínimo del tramo ${E(m)} → paga ${x >= m ? "el impuesto liquidado" : "el mínimo"}`,
-      `${cnPct(r)} × ${E(Bp)} = ${E(x)}; minimum for the band ${E(m)} → pays ${x >= m ? "the computed tax" : "the minimum"}`, true); }
-  // Czechia
-  { const x = Bp * 0.21; add("CZ", "Chequia", "Czechia", 0, x, `21 % × ${E(Bp)}; sin impuesto mínimo`, `21 % × ${E(Bp)}; no minimum tax`, false); }
-  // Austria
-  { const m = c.atAG ? 3500 : 500, x = Bp * 0.23, pay = Math.max(x, m);
-    add("AT", "Austria", "Austria", 1, pay,
-      `23 % × ${E(Bp)} = ${E(x)}; mínimo ${E(m)} (${c.atAG ? "AG" : "GmbH"}) → paga ${x >= m ? "el impuesto liquidado" : "el mínimo, descontable después"}`,
-      `23 % × ${E(Bp)} = ${E(x)}; minimum ${E(m)} (${c.atAG ? "AG" : "GmbH"}) → pays ${x >= m ? "the computed tax" : "the minimum, creditable later"}`, true); }
-  // Poland
-  { const small = R <= 2000000, r = small ? 0.09 : 0.19, x = Bp * r;
-    const lowMargin = B <= 0 || (R > 0 && B / R <= 0.02);
-    const m = !small && lowMargin ? 0.10 * 0.015 * R : 0, pay = Math.max(x, m);
-    add("PL", "Polonia", "Poland", 2, pay,
-      `${small ? "Pequeño contribuyente (ingresos ≤ 2 M EUR): 9 %" : "19 %"} × ${E(Bp)} = ${E(x)}${small ? "; exento del impuesto mínimo" : lowMargin ? `; margen ≤ 2 %: mínimo 10 % × 1,5 % × ingresos = ${E(m)}` : "; margen > 2 %: no aplica el mínimo"}`,
-      `${small ? "Small taxpayer (revenue ≤ EUR 2 M): 9 %" : "19 %"} × ${E(Bp)} = ${E(x)}${small ? "; exempt from the minimum tax" : lowMargin ? `; margin ≤ 2 %: minimum 10 % × 1.5 % × revenue = ${E(m)}` : "; margin > 2 %: no minimum"}`, !small); }
-  // Hungary
-  { const mi = 0.02 * R, useMin = !c.huInfo && Bp < mi, base = useMin ? mi : Bp, x = base * 0.09;
-    add("HU", "Hungría", "Hungary", 2, x,
-      `9 % × ${E(base)}${useMin ? ` (renta mínima = 2 % de los ingresos, mayor que la base ${E(Bp)})` : c.huInfo && Bp < mi ? " (presentó la declaración informativa: no aplica la renta mínima)" : " (la base supera la renta mínima del 2 % de los ingresos)"}`,
-      `9 % × ${E(base)}${useMin ? ` (minimum income = 2 % of revenue, above the base ${E(Bp)})` : c.huInfo && Bp < mi ? " (information return filed: minimum income does not apply)" : " (the base exceeds the minimum income of 2 % of revenue)"}`, !c.huInfo); }
-  // Lithuania
-  { const r = c.ltFirst && R < 300000 ? 0 : c.ltSmall && R < 300000 ? 0.07 : 0.17, x = Bp * r;
-    add("LT", "Lituania", "Lithuania", 0, x,
-      `${cnPct(r)} × ${E(Bp)}${R < 300000 ? (c.ltSmall || c.ltFirst ? " (pequeña sociedad, ingresos < 300 000 EUR)" : "") : ""}; sin impuesto mínimo`,
-      `${cnPct(r)} × ${E(Bp)}${R < 300000 ? (c.ltSmall || c.ltFirst ? " (small company, revenue < EUR 300,000)" : "") : ""}; no minimum tax`, false); }
-  // Estonia
-  { const d = Math.max(c.div, 0) + Math.max(c.nb, 0), x = d * 22 / 78;
-    add("EE", "Estonia", "Estonia", "D", x,
-      `22/78 × (dividendo ${E(c.div)} + gastos ajenos al negocio ${E(c.nb)}) ; la utilidad retenida no paga`,
-      `22/78 × (dividend ${E(c.div)} + non-business expenses ${E(c.nb)}); retained profit is not taxed`, c.nb > 0); }
-  // Latvia
-  { const d = Math.max(c.div, 0) + Math.max(c.nb, 0), x = d * 20 / 80;
-    add("LV", "Letonia", "Latvia", "D", x,
-      `20/80 × (dividendo ${E(c.div)} + gastos ajenos al negocio ${E(c.nb)}); la utilidad retenida no paga`,
-      `20/80 × (dividend ${E(c.div)} + non-business expenses ${E(c.nb)}); retained profit is not taxed`, c.nb > 0); }
-  // Colombia
-  { const x = Bp * 0.35;
-    add("CO", "Colombia", "Colombia", 4, x,
-      `35 % × ${E(Bp)}; sin beneficios tributarios la TTD supera el 15 %; renta presuntiva 0 %${B <= 0 ? "; con utilidad depurada ≤ 0 no hay impuesto" : ""}`,
-      `35 % × ${E(Bp)}; without tax benefits the TTD is above 15 %; presumptive income 0 %${B <= 0 ? "; with adjusted profit ≤ 0 there is no tax" : ""}`, false); }
-  return out;
-}
-const DESIGN = {
-  0: { es: "Sin piso", en: "No floor" }, 1: { es: "1 · Valor fijo", en: "1 · Fixed amount" }, 2: { es: "2 · % de ingresos", en: "2 · % of revenue" },
-  4: { es: "4 · Tasa mínima 15 %", en: "4 · 15 % minimum rate" }, D: { es: "Grava el reparto", en: "Taxes distributions" },
-};
-function vCountries() {
-  const c = S.cn, rows = taxCountries(c), mx = Math.max(...rows.map(r => r.tax), 1), fx = S.tax.fx > 0 ? S.tax.fx : 3550;
-  const inp = (k, lab, hint) => `<div class="field"><label for="cn-${k}">${lab}</label><input id="cn-${k}" data-cn="${k}" inputmode="numeric" value="${k === "pbt" && c[k] < 0 ? "-" : ""}${fmt(Math.abs(c[k]), false)}">${hint ? `<small class="note">${hint}</small>` : ""}</div>`;
-  const chk = (k, lab) => `<label class="chk"><input type="checkbox" data-cnb="${k}" ${c[k] ? "checked" : ""}> ${lab}</label>`;
-  return `
-  <div><h1>${tr("La misma sociedad en nueve países", "The same company in nine countries")}</h1>
-  <p class="lead">${tr("Escriba los datos de una sociedad en euros y compare el impuesto de renta a nivel de la sociedad en Europa Central, el Báltico y Colombia (reglas 2026). Versión docente simplificada: se aplica la misma base en todos los países y no incluye el impuesto de los socios sobre dividendos, impuestos locales ni pérdidas anteriores.", "Enter a company's data in euro and compare the corporate income tax in Central Europe, the Baltics and Colombia (2026 rules). Simplified teaching version: the same base is used in every country, and shareholder tax on dividends, local taxes and prior losses are left out.")}</p></div>
-  <div class="panel">
-    <div class="row" style="margin-bottom:12px"><span class="note">${tr("Casos de la clase:", "Lecture cases:")}</span>
-      <button class="btn" data-cnp="A">${tr("A · Sociedad con utilidad", "A · Profitable company")}</button>
-      <button class="btn" data-cnp="B">${tr("B · La misma sociedad con pérdida", "B · The same company with a loss")}</button>
-      <button class="btn" data-cnp="C">${tr("C · El gerente: ingresos de 80 000 EUR", "C · The manager: revenue EUR 80,000")}</button></div>
-    <div class="fields">
-      ${inp("rev", tr("Ingresos del año (EUR)", "Revenue for the year (EUR)"))}
-      ${inp("pbt", tr("Utilidad contable antes de impuestos (EUR; negativa = pérdida)", "Accounting profit before tax (EUR; negative = loss)"))}
-      ${inp("nb", tr("Gastos ajenos al negocio, no deducibles (EUR)", "Non-business, non-deductible expenses (EUR)"), tr("En Estonia y Letonia se gravan como reparto oculto.", "In Estonia and Latvia taxed as a hidden distribution."))}
-      ${inp("div", tr("Dividendo neto pagado a los socios (EUR)", "Net dividend paid to shareholders (EUR)"), tr("Solo importa en Estonia y Letonia.", "Matters only in Estonia and Latvia."))}
-    </div>
-    <div class="row" style="margin-top:12px">
-      ${chk("huInfo", tr("Hungría: presenta la declaración informativa", "Hungary: files the information return"))}
-      ${chk("ltSmall", tr("Lituania: cumple las condiciones de pequeña sociedad", "Lithuania: meets the small-company conditions"))}
-      ${chk("ltFirst", tr("Lituania: primeros dos años", "Lithuania: first two years"))}
-      ${chk("atAG", tr("Austria: sociedad anónima (AG)", "Austria: joint-stock company (AG)"))}
-    </div>
-  </div>
-  <div class="panel scroll">
-    <table class="cn"><thead><tr><th>${tr("País", "Country")}</th><th>${tr("Diseño", "Design")}</th><th>${tr("Cálculo", "Computation")}</th><th class="num">EUR</th><th class="num">${tr("≈ COP", "≈ COP")}</th><th class="num">${tr("Tarifa efectiva", "Effective rate")}</th><th style="width:22%"></th></tr></thead>
-    <tbody>${rows.map(r => `<tr class="${r.id === "CO" ? "co" : ""}"><td><b>${r.name[S.lang]}</b></td><td><span class="pill ${r.design === 0 ? "" : "info"}">${DESIGN[r.design][S.lang]}</span></td><td class="how">${r.how[S.lang]}</td><td class="num"><b>${fmtEUR(r.tax).replace("\u00A0EUR", "")}</b></td><td class="num">${fmt(r.tax * fx)}</td><td class="num">${c.pbt > 0 ? pct(r.tax / c.pbt) : "–"}</td><td><div class="bar"><span style="width:${(r.tax / mx * 100).toFixed(1)}%"></span></div></td></tr>`).join("")}</tbody></table>
-    <p class="note" style="margin-top:10px">${tr("Base usada: utilidad contable + gastos no deducibles = ", "Base used: accounting profit + non-deductible expenses = ")}<span class="mono">${fmtEUR(c.pbt + c.nb)}</span>. ${tr("Tipo de cambio ", "Exchange rate ")}${fmt(fx, false)} COP/EUR.</p>
-  </div>
-  <div class="grid3">
-    <div class="flag"><b>${tr("¿Quién cobra con pérdida?", "Who charges tax with a loss?")}</b><br>${tr("Pruebe el caso B. Eslovaquia y Austria cobran un valor fijo; Hungría, sobre el 2 % de los ingresos si no presenta la declaración informativa; Estonia y Letonia, sobre los gastos ajenos al negocio. Polonia exime a los pequeños contribuyentes.", "Try case B. Slovakia and Austria charge a fixed amount; Hungary, on 2 % of revenue unless the information return is filed; Estonia and Latvia, on non-business expenses. Poland exempts small taxpayers.")}</div>
-    <div class="flag"><b>${tr("La zona sin costo", "The zero-cost zone")}</b><br>${tr("Pruebe el caso C y cambie la utilidad entre -5 000 y 9 000 EUR: en Eslovaquia el impuesto no se mueve de 960 EUR.", "Try case C and move the profit between -5,000 and 9,000 EUR: in Slovakia the tax stays at EUR 960.")}</div>
-    <div class="flag"><b>${tr("Retener o repartir", "Retain or distribute")}</b><br>${tr("En el caso A ponga el dividendo en 0: Estonia y Letonia solo gravan los gastos ajenos al negocio. Súbalo a 55 000 EUR y compare con Colombia.", "In case A set the dividend to 0: Estonia and Latvia only tax the non-business expenses. Raise it to EUR 55,000 and compare with Colombia.")}</div>
-  </div>
-  <p class="note">${tr("Fuentes: Eslovaquia, Ley 595/2003 § 15 y § 46b (slov-lex.sk, versión 1.1.2026); Colombia, art. 240 ET; Lituania, Estonia y Hungría, PwC Worldwide Tax Summaries (2026); Polonia, RSM Poland (umbral 2026) y MDDP (exenciones del impuesto mínimo); Chequia, Austria, Letonia: legislación consolidada y Tax Foundation, Corporate Income Tax Rates in Europe 2026. Detalle en Aprender.", "Sources: Slovakia, Act 595/2003 § 15 and § 46b (slov-lex.sk, version of 1.1.2026); Colombia, ET art. 240; Lithuania, Estonia and Hungary, PwC Worldwide Tax Summaries (2026); Poland, RSM Poland (2026 threshold) and MDDP (minimum-tax exemptions); Czechia, Austria, Latvia: consolidated legislation and Tax Foundation, Corporate Income Tax Rates in Europe 2026. Detail under Learn.")}</p>`;
-}
-function bindCountries() {
-  document.querySelectorAll("[data-cn]").forEach(i => {
-    i.addEventListener("change", () => { const v = String(i.value).trim(); const n = parseNum(v.replace(/^-/, "")); S.cn[i.dataset.cn] = v.startsWith("-") ? -n : n; store.set("cn", S.cn); render(); });
-    i.addEventListener("keydown", ev => { if (ev.key === "Enter") i.blur(); });
-  });
-  document.querySelectorAll("[data-cnb]").forEach(i => i.addEventListener("change", () => { S.cn[i.dataset.cnb] = i.checked; store.set("cn", S.cn); render(); }));
-  document.querySelectorAll("[data-cnp]").forEach(b => b.addEventListener("click", () => { Object.assign(S.cn, CN_PRESETS[b.dataset.cnp]); store.set("cn", S.cn); render(); }));
-}
-
-/* ---------------- practice ---------------- */
-function practiceKey() {
-  // answers from the solved example and the lecture cases (independent of what the student typed)
-  const saved = S.entries; S.entries = sampleEntries();
-  const f = figures(), co = taxCO(f, { ...S.tax, fx: 3550, incrngo: 0, exempt: 0, exemptOther: 0, losses: 0, credits: 0, otherPlus: 0, otherMinus: 0, vimpp: 0, vngo: 0 });
-  const sk = taxSK(f, { ...S.tax, fx: 3550, otherPlus: 0, otherMinus: 0, incrngo: 0 });
-  S.entries = saved;
-  const A = taxCountries({ ...S.cn, ...CN_PRESETS.A, huInfo: false, ltSmall: true, ltFirst: false, atAG: false });
-  const g = id => A.find(r => r.id === id).tax;
-  const B = taxCountries({ ...S.cn, ...CN_PRESETS.B, huInfo: false, ltSmall: true, ltFirst: false, atAG: false });
-  return { pbt: f.pbt, rlg: co.rlg, coTax: co.total, skRev: sk.revEUR, skPay: sk.pay, aSK: g("SK"), aEE: g("EE"), aPL: g("PL"), aCO: g("CO"), lossSet: B.filter(r => r.tax > 0.5).map(r => r.id).sort().join(",") };
-}
-function vPractice() {
-  const K = practiceKey(), a = S.pr;
-  const q = (id, lab, unit) => {
-    const v = a[id], ok = v !== undefined && v !== "" ? Math.abs(parseNum(v) - K[id]) <= Math.max(2, Math.abs(K[id]) * 0.005) : null;
-    return `<div class="field pq"><label for="pr-${id}">${lab}</label><div class="row" style="flex-wrap:nowrap"><input id="pr-${id}" data-pr="${id}" inputmode="numeric" value="${esc(v ?? "")}" placeholder="${unit}"><span class="pill ${ok === null ? "" : ok ? "ok" : "bad"}" style="min-width:72px;justify-content:center">${ok === null ? "…" : ok ? tr("Correcto", "Correct") : tr("Revise", "Check")}</span></div></div>`;
-  };
-  const countries = ["SK", "CZ", "AT", "PL", "HU", "LT", "EE", "LV", "CO"], names = Object.fromEntries(taxCountries(S.cn).map(r => [r.id, r.name[S.lang]]));
-  const sel = (a.loss || "").split(",").filter(Boolean), lossOk = a.lossChecked ? sel.sort().join(",") === K.lossSet : null;
-  return `
-  <div><h1>${tr("Práctica: 60 minutos en tres tareas", "Practice: 60 minutes in three tasks")}</h1>
-  <p class="lead">${tr("Trabaje en parejas. Cada tarea usa una parte de la aplicación; las casillas verifican su respuesta. Al final, evalúe la sesión en Slido.", "Work in pairs. Each task uses one part of the app; the boxes check your answer. At the end, rate the session on Slido.")}</p></div>
-  <div class="panel task"><p class="eyebrow">${tr("Tarea 1 · 20 minutos · Libro diario", "Task 1 · 20 minutes · Journal")}</p><h2>${tr("Registre el año de Comercializadora Andina S.A.S.", "Record the year of Comercializadora Andina S.A.S.")}</h2>
-    <ol><li>${tr("En <b>Libro diario</b>, pulse «Ejemplo sin cuentas (para resolver)».", "In <b>Journal</b>, click 'Example without accounts (to solve)'.")}</li>
-    <li>${tr("Escriba la cuenta débito y la cuenta crédito del PUC en cada una de las 19 líneas. Tab en la columna Crédito pasa a la línea siguiente.", "Enter the PUC debit and credit account on each of the 19 lines. Tab in the Credit column moves to the next line.")}</li>
-    <li>${tr("Cuando el estado diga «Débitos = créditos», abra <b>Estados financieros</b>.", "When the status says 'Debits = credits', open <b>Financial statements</b>.")}</li></ol>
-    <div class="fields">${q("pbt", tr("Utilidad antes de impuestos (COP)", "Profit before tax (COP)"), "COP")}</div>
-    <p class="note">${tr("Si no coincide, compare sus cuentas con «Cargar ejemplo resuelto»: primero copie su libro con «Copiar como CSV».", "If it does not match, compare your accounts with 'Load solved example': first save your journal with 'Copy as CSV'.")}</p>
-  </div>
-  <div class="panel task"><p class="eyebrow">${tr("Tarea 2 · 20 minutos · Del resultado al impuesto", "Task 2 · 20 minutes · From profit to tax")}</p><h2>${tr("Colombia y Eslovaquia con la misma utilidad", "Colombia and Slovakia with the same profit")}</h2>
-    <ol><li>${tr("Calcule a mano, con el ejemplo resuelto: ¿qué gastos no son deducibles? (la multa de tránsito y el 50 % del GMF).", "Compute by hand, with the solved example: which expenses are not deductible? (the traffic fine and 50 % of the GMF).")}</li>
-    <li>${tr("Escriba sus resultados y verifíquelos en <b>Del resultado al impuesto</b>.", "Enter your results and check them in <b>From profit to tax</b>.")}</li></ol>
-    <div class="fields">
-      ${q("rlg", tr("Renta líquida gravable en Colombia (COP)", "Colombian taxable income (COP)"), "COP")}
-      ${q("coTax", tr("Impuesto de renta en Colombia (COP)", "Colombian income tax (COP)"), "COP")}
-      ${q("skRev", tr("Ingresos en EUR para Eslovaquia (3 550 COP/EUR)", "Revenue in EUR for Slovakia (3,550 COP/EUR)"), "EUR")}
-      ${q("skPay", tr("Impuesto a pagar en Eslovaquia (EUR)", "Tax payable in Slovakia (EUR)"), "EUR")}
-    </div>
-    <p class="flag" style="margin-top:10px">${tr("<b>¿Y si un cliente quiebra?</b> Agregue en el libro diario un deterioro de cartera de 25 000 000 (débito 5199, crédito 1399, supóngalo deducible). ¿Qué pasa con el impuesto en Colombia y en Eslovaquia? ¿Por qué Eslovaquia no cambia?", "<b>What if a customer goes bankrupt?</b> Add an impairment of receivables of 25,000,000 in the journal (debit 5199, credit 1399, assume it is deductible). What happens to the tax in Colombia and in Slovakia? Why does Slovakia not change?")}</p>
-  </div>
-  <div class="panel task"><p class="eyebrow">${tr("Tarea 3 · 15 minutos · Nueve países", "Task 3 · 15 minutes · Nine countries")}</p><h2>${tr("El caso A de la clase, a mano", "Lecture case A, by hand")}</h2>
-    <p>${tr("Ingresos 800 000 EUR, utilidad contable 60 000 EUR, gastos ajenos al negocio 5 000 EUR, dividendo neto 30 000 EUR. Calcule el impuesto de la sociedad y verifique después en <b>Nueve países</b>.", "Revenue EUR 800,000, accounting profit EUR 60,000, non-business expenses EUR 5,000, net dividend EUR 30,000. Compute the company's tax, then check it in <b>Nine countries</b>.")}</p>
-    <div class="fields">
-      ${q("aSK", tr("Eslovaquia (EUR)", "Slovakia (EUR)"), "EUR")}
-      ${q("aPL", tr("Polonia (EUR)", "Poland (EUR)"), "EUR")}
-      ${q("aEE", tr("Estonia (EUR)", "Estonia (EUR)"), "EUR")}
-      ${q("aCO", tr("Colombia (EUR)", "Colombia (EUR)"), "EUR")}
-    </div>
-    <p style="margin-top:12px"><b>${tr("Caso B: la misma sociedad con una pérdida de 10 000 EUR y sin dividendo. ¿Qué países cobran impuesto de todas formas?", "Case B: the same company with a loss of EUR 10,000 and no dividend. Which countries charge tax anyway?")}</b></p>
-    <div class="row" style="margin-top:6px">${countries.map(id => `<label class="chk"><input type="checkbox" data-prl="${id}" ${sel.includes(id) ? "checked" : ""}> ${names[id]}</label>`).join("")}</div>
-    <div class="row" style="margin-top:8px"><button class="btn primary" id="pr-loss-check">${tr("Verificar", "Check")}</button>${lossOk === null ? "" : `<span class="pill ${lossOk ? "ok" : "bad"}">${lossOk ? tr("Correcto", "Correct") : tr("Todavía no: pruebe el caso B en Nueve países", "Not yet: try case B in Nine countries")}</span>`}</div>
-  </div>
-  <div class="panel task"><p class="eyebrow">${tr("Cierre · 5 minutos", "Wrap-up · 5 minutes")}</p><h2>${tr("Evalúe la sesión", "Rate the session")}</h2>
-    <p>${tr("Una evaluación para toda la sesión: la clase y la práctica.", "One rating for the whole session: lecture and practice.")}</p>
-    ${SLIDO_URL ? `<div class="row" style="margin-top:8px"><a class="btn primary" href="${SLIDO_URL}" target="_blank" rel="noopener">${tr("Abrir Slido", "Open Slido")}</a></div>` : `<p class="note">${tr("Use el código de Slido que muestra el profesor.", "Use the Slido code shown by the lecturer.")}</p>`}
-    <div class="row" style="margin-top:10px"><button class="btn warn" id="pr-reset">${tr("Borrar mis respuestas", "Clear my answers")}</button></div>
-  </div>`;
-}
-function bindPractice() {
-  document.querySelectorAll("[data-pr]").forEach(i => i.addEventListener("change", () => { S.pr[i.dataset.pr] = i.value; store.set("pr", S.pr); const y = window.scrollY; render(); window.scrollTo({ top: y }); }));
-  document.querySelectorAll("[data-prl]").forEach(i => i.addEventListener("change", () => { const s = new Set((S.pr.loss || "").split(",").filter(Boolean)); i.checked ? s.add(i.dataset.prl) : s.delete(i.dataset.prl); S.pr.loss = [...s].join(","); S.pr.lossChecked = false; store.set("pr", S.pr); }));
-  const c = document.getElementById("pr-loss-check"); if (c) c.onclick = () => { S.pr.lossChecked = true; store.set("pr", S.pr); const y = window.scrollY; render(); window.scrollTo({ top: y }); };
-  const r = document.getElementById("pr-reset"); if (r) r.onclick = () => { S.pr = {}; store.set("pr", S.pr); render(); };
-}
-
 /* ---------------- global events ---------------- */
 document.addEventListener("click", ev => {
   const el = ev.target.closest("button"); if (!el) return;
@@ -1319,7 +1126,6 @@ const QUIZ = [
 ];
 /* ---------------- SELF-TEST BANK ---------------- */
 const TOPICS = [
- { id:"K", es:"Nueve países", en:"Nine countries", d:{es:"Tarifas, pisos y el modelo estonio en la clase.",en:"Rates, floors and the Estonian model from the lecture."} },
  { id:"L", es:"La clase: impuestos mínimos", en:"The lecture: minimum taxes", d:{es:"Diseños de piso, el quiebre, Eslovaquia y Estonia.",en:"Floor designs, the kink, Slovakia and Estonia."} },
  { id:"T", es:"Tasa mínima en Colombia (TTD)", en:"Colombian minimum rate (TTD)", d:{es:"Fórmula, cálculo, alcance y jurisprudencia.",en:"Formula, computation, scope and case law."} },
  { id:"R", es:"Renta de sociedades en Colombia", en:"Corporate income tax in Colombia", d:{es:"Tarifas, deducciones, pérdidas y dividendos.",en:"Rates, deductions, losses and dividends."} },
@@ -1598,58 +1404,9 @@ LEARN.splice(4, 0, { t: { es: "En trámite: proyecto de ley 477 de 2026", en: "P
    <p class="note">Summary taken from published analyses of the bill, not from the official text; check the text and its status before relying on it.</p>` },
   src: [["ANDI: resumen del PL 477", "https://www.andi.com.co/Uploads/Novedades%20-%20PL%20rescate%20fiscal.pdf"], ["Actualícese", "https://actualicese.com/implicaciones-del-proyecto-de-ley-de-rescate-economico-para-contadores-empresarios-y-contribuyentes/"], ["El Tiempo", "https://www.eltiempo.com/economia/sectores/ley-de-rescate-siete-de-cada-diez-pesos-saldrian-del-apreton-del-estado-quien-pagaria-mas-y-quien-recibiria-alivios-3597333"]] });
 
-const LEARN_CN = { t: { es: "Nueve países: reglas 2026", en: "Nine countries: 2026 rules" },
-  b: {
-   es: `<p>Reglas del impuesto de renta de sociedades que usa la página <b>Nueve países</b>. Solo el nivel de la sociedad; el impuesto de los socios sobre dividendos se deja fuera.</p>
-   <div class="scroll"><table><thead><tr><th>País</th><th>Tarifa 2026</th><th>Impuesto mínimo o piso</th><th>¿Se paga con pérdida?</th></tr></thead><tbody>
-   <tr><td>Eslovaquia</td><td>10 % (ingresos ≤ 100 000 EUR), 21 %, 24 % (ingresos > 5 M EUR)</td><td>Valor fijo por ingresos: 340 / 960 / 1 920 / 3 840 / 11 520 EUR; el exceso se descuenta en 3 años</td><td>Sí</td></tr>
-   <tr><td>Chequia</td><td>21 %</td><td>Ninguno</td><td>No</td></tr>
-   <tr><td>Austria</td><td>23 %</td><td>500 EUR (GmbH) / 3 500 EUR (AG), descontable después</td><td>Sí</td></tr>
-   <tr><td>Polonia</td><td>9 % pequeño contribuyente (ingresos ≤ 2 M EUR), 19 %</td><td>10 % de una base mínima (simplificada: 1,5 % de los ingresos) si hay pérdida o margen ≤ 2 %; exentos los pequeños contribuyentes y los primeros 3 años</td><td>Sí, salvo exentos</td></tr>
-   <tr><td>Hungría</td><td>9 %</td><td>Renta mínima del 2 % de los ingresos (simplificado) o declaración informativa adicional</td><td>Sí, evitable</td></tr>
-   <tr><td>Lituania</td><td>17 %; pequeñas sociedades (ingresos < 300 000 EUR, con condiciones): 0 % los dos primeros años, 7 % después</td><td>Ninguno</td><td>No</td></tr>
-   <tr><td>Estonia</td><td>22/78 del reparto neto</td><td>No grava la utilidad retenida; grava dividendos, repartos ocultos y gastos ajenos al negocio</td><td>Solo si reparte o tiene gastos ajenos</td></tr>
-   <tr><td>Letonia</td><td>20/80 del reparto neto</td><td>Mismo modelo que Estonia</td><td>Solo si reparte o tiene gastos ajenos</td></tr>
-   <tr><td>Colombia</td><td>35 % (art. 240 ET)</td><td>Tasa de tributación depurada del 15 % (art. 240 par. 6); renta presuntiva 0 % desde 2021</td><td>No, si la utilidad depurada es ≤ 0</td></tr>
-   </tbody></table></div>
-   <p><b>Simplificaciones de la página.</b> La misma base (utilidad contable + gastos no deducibles) en todos los países; sin pérdidas anteriores, impuestos locales (por ejemplo, el impuesto local de Hungría, hasta 2 % de los ingresos ajustados), sobretasas ni impuestos de los socios. La base mínima polaca real añade algunos costos; la renta mínima húngara se calcula sobre ingresos ajustados.</p>`,
-   en: `<p>Corporate income tax rules used by the <b>Nine countries</b> page. Company level only; shareholder tax on dividends is left out.</p>
-   <div class="scroll"><table><thead><tr><th>Country</th><th>Rate 2026</th><th>Minimum tax or floor</th><th>Payable with a loss?</th></tr></thead><tbody>
-   <tr><td>Slovakia</td><td>10 % (revenue ≤ EUR 100,000), 21 %, 24 % (revenue > EUR 5 M)</td><td>Fixed amount by revenue: 340 / 960 / 1,920 / 3,840 / 11,520 EUR; the excess is creditable over 3 years</td><td>Yes</td></tr>
-   <tr><td>Czechia</td><td>21 %</td><td>None</td><td>No</td></tr>
-   <tr><td>Austria</td><td>23 %</td><td>EUR 500 (GmbH) / EUR 3,500 (AG), creditable later</td><td>Yes</td></tr>
-   <tr><td>Poland</td><td>9 % small taxpayer (revenue ≤ EUR 2 M), 19 %</td><td>10 % of a minimum base (simplified: 1.5 % of revenue) with a loss or margin ≤ 2 %; small taxpayers and the first 3 years are exempt</td><td>Yes, unless exempt</td></tr>
-   <tr><td>Hungary</td><td>9 %</td><td>Minimum income of 2 % of revenue (simplified) or an additional information return</td><td>Yes, avoidable</td></tr>
-   <tr><td>Lithuania</td><td>17 %; small companies (revenue < EUR 300,000, with conditions): 0 % in the first two years, 7 % afterwards</td><td>None</td><td>No</td></tr>
-   <tr><td>Estonia</td><td>22/78 of the net distribution</td><td>Retained profit is not taxed; dividends, hidden distributions and non-business expenses are</td><td>Only if it distributes or has non-business expenses</td></tr>
-   <tr><td>Latvia</td><td>20/80 of the net distribution</td><td>Same model as Estonia</td><td>Only if it distributes or has non-business expenses</td></tr>
-   <tr><td>Colombia</td><td>35 % (ET art. 240)</td><td>15 % adjusted tax rate (art. 240 para. 6); presumptive income 0 % since 2021</td><td>No, if adjusted profit is ≤ 0</td></tr>
-   </tbody></table></div>
-   <p><b>Simplifications on the page.</b> The same base (accounting profit + non-deductible expenses) in every country; no prior losses, local taxes (e.g. Hungary's local business tax, up to 2 % of adjusted revenue), surcharges or shareholder taxes. The real Polish minimum base adds some costs; the Hungarian minimum income is computed on adjusted revenue.</p>` },
-  src: [["Eslovaquia / Slovakia: Ley 595/2003, § 15 y § 46b (1.1.2026)", "https://static.slov-lex.sk/static/SK/ZZ/2003/595/20260101.html"], ["Colombia: Estatuto Tributario art. 240", ET(9)], ["Lithuania: PwC Worldwide Tax Summaries", "https://taxsummaries.pwc.com/lithuania/corporate/taxes-on-corporate-income"], ["Estonia: PwC Worldwide Tax Summaries", "https://taxsummaries.pwc.com/estonia/corporate/taxes-on-corporate-income"], ["Poland: RSM, preferential CIT rate 2026", "https://www.rsm.global/poland/en/insights/tax/preferential-corporate-tax-rate"], ["Poland: MDDP, minimum income tax", "https://www.mddp.pl/local-minimum-income-tax/"], ["Hungary: PwC, Investing in Hungary 2026", "https://www.pwc.com/hu/hu/kiadvanyok/assets/pdf/investing-in-hungary-2026.pdf"], ["Tax Foundation: Corporate Income Tax Rates in Europe 2026", "https://taxfoundation.org/data/all/eu/corporate-tax-rates-europe/"]] };
-const Q_CN = [
-q("K","¿Qué tarifa paga en 2026 una sociedad eslovaca con ingresos de 800 000 EUR?","What rate does a Slovak company with revenue of EUR 800,000 pay in 2026?",
- ["10 %","15 %","21 %","24 %"],null,2,"10 % solo hasta 100 000 EUR de ingresos; 24 % por encima de 5 millones.","10 % only up to EUR 100,000 of revenue; 24 % above 5 million."),
-q("K","Sociedad eslovaca con ingresos de 800 000 EUR y pérdida. ¿Cuánto paga?","Slovak company with revenue of EUR 800,000 and a loss. How much does it pay?",
- ["0 EUR","960 EUR","3 840 EUR","11 520 EUR"],["EUR 0","EUR 960","EUR 3,840","EUR 11,520"],2,"El mínimo del tramo de 500 000 a 5 000 000 EUR de ingresos es 3 840 EUR (§ 46b).","The minimum for the band from EUR 500,000 to 5,000,000 of revenue is EUR 3,840 (§ 46b)."),
-q("K","Una sociedad estonia gana 100 000 EUR y no reparte nada. ¿Cuánto impuesto de renta paga?","An Estonian company earns EUR 100,000 and distributes nothing. How much income tax does it pay?",
- ["0 EUR","22 000 EUR","20 000 EUR","22 % de la utilidad"],["EUR 0","EUR 22,000","EUR 20,000","22 % of profit"],0,"Estonia grava el reparto, no la utilidad retenida.","Estonia taxes distributions, not retained profit."),
-q("K","Una sociedad estonia paga un dividendo neto de 78 000 EUR. ¿Cuánto impuesto paga la sociedad?","An Estonian company pays a net dividend of EUR 78,000. How much tax does the company pay?",
- ["17 160 EUR","22 000 EUR","15 600 EUR","0 EUR"],["EUR 17,160","EUR 22,000","EUR 15,600","EUR 0"],1,"22/78 × 78 000 = 22 000: el 22 % del bruto de 100 000.","22/78 × 78,000 = 22,000: 22 % of the gross 100,000."),
-q("K","¿Qué país del ejemplo grava los repartos con 20/80?","Which country in the examples taxes distributions at 20/80?",
- ["Lituania","Letonia","Polonia","Chequia"],["Lithuania","Latvia","Poland","Czechia"],1,"Letonia adoptó el modelo estonio en 2018.","Latvia adopted the Estonian model in 2018."),
-q("K","¿Por qué una sociedad polaca con ingresos de 800 000 EUR y pérdida no paga el impuesto mínimo?","Why does a Polish company with revenue of EUR 800,000 and a loss not pay the minimum tax?",
- ["Polonia no tiene impuesto mínimo","Los pequeños contribuyentes (ingresos ≤ 2 M EUR) están exentos","Solo aplica a sociedades anónimas","Porque la tarifa es 9 %"],["Poland has no minimum tax","Small taxpayers (revenue ≤ EUR 2 M) are exempt","It applies only to joint-stock companies","Because the rate is 9 %"],1,"El impuesto mínimo polaco existe, pero exime a los pequeños contribuyentes.","The Polish minimum tax exists, but small taxpayers are exempt."),
-q("K","¿Cómo puede una sociedad húngara con pérdida evitar el impuesto sobre la renta mínima?","How can a loss-making Hungarian company avoid tax on the minimum income?",
- ["No puede","Con una declaración informativa adicional","Pagando el impuesto local","Repartiendo dividendos"],["It cannot","With an additional information return","By paying the local business tax","By paying dividends"],1,"Hungría permite elegir: tributar sobre el 2 % de los ingresos o presentar la declaración informativa.","Hungary lets the company choose: tax on 2 % of revenue or file the information return."),
-q("K","¿Qué país de Europa Central del ejemplo no tiene ningún impuesto mínimo?","Which Central European country in the examples has no minimum tax at all?",
- ["Eslovaquia","Austria","Chequia","Hungría"],["Slovakia","Austria","Czechia","Hungary"],2,"Chequia (21 %) y Lituania (17 %) no tienen piso.","Czechia (21 %) and Lithuania (17 %) have no floor."),
-];
-
-LEARN.splice(1, 0, LEARN_CN);
-const BANK = [...QUIZ.map((x, k) => ({ ...x, t: OLD_TOPIC[k] })), ...Q_NEW, ...Q_CN];
+const BANK = [...QUIZ.map((x, k) => ({ ...x, t: OLD_TOPIC[k] })), ...Q_NEW];
 const SLIDO_CODE = "";
-const SLIDO_URL = "https://app.sli.do/event/i7nA5pKnrg6xnUss8dmSnV";
+const SLIDO_URL = "https://app.sli.do/event/1vQ2nVcq3dKetEBYNZF7Cd";
 render();
 </script>
 
